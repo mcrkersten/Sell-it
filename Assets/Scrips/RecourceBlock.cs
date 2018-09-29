@@ -7,7 +7,7 @@ namespace DrillTap {
         public Recource recourceType;
 
 
-        public void setSprite(Sprite sprite) {
+        public void SetSprite(Sprite sprite) {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         }
     }

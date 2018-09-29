@@ -13,6 +13,7 @@ namespace DrillTap {
             public Sprite recourceImage;
             public int recourceWaarden;
             public Color particleColor;
+            public float strength;
         }
 
         [SerializeField]
@@ -34,6 +35,10 @@ namespace DrillTap {
 
         public static Color GetParticleColor(Recource recourceType) {
             return instance.types.SingleOrDefault(x => x.recource == recourceType).particleColor;
+        }
+
+        public static float GetStrength(Recource recourceType) {
+            return instance.types.SingleOrDefault(x => x.recource == recourceType).strength;
         }
     }
 }
