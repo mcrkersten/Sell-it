@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203466172}
   - component: {fileID: 1203466173}
+  - component: {fileID: 1203466174}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -347,6 +348,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1203466174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1203466171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58656484cfb1c1a4e92a05fe8544bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recourceType: 0
 --- !u!1 &1699406144
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699406145}
   - component: {fileID: 1699406146}
+  - component: {fileID: 1699406147}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -421,6 +435,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1699406147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699406144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58656484cfb1c1a4e92a05fe8544bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recourceType: 0
 --- !u!1 &1901321869
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e458b466c60f2524d90a17fc117b8a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
+  blocks:
+  - {fileID: 1203466174}
+  - {fileID: 1699406147}
+  - {fileID: 2027685381}
 --- !u!61 &1901321871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -500,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027685379}
   - component: {fileID: 2027685380}
+  - component: {fileID: 2027685381}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -565,6 +595,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &2027685381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2027685378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58656484cfb1c1a4e92a05fe8544bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recourceType: 0
 --- !u!1 &2115119505
 GameObject:
   m_ObjectHideFlags: 0

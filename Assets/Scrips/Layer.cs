@@ -9,6 +9,7 @@ namespace DrillTap {
         public delegate void OnBlockDestroy(int score);
         public static event OnBlockDestroy onBlockDestroy;
         public RecourceBlock[] blocks;
+        System.Random rnd = new System.Random();
 
         private int value;
 
@@ -29,11 +30,11 @@ namespace DrillTap {
         public void GenerateBlock() {
             foreach(RecourceBlock block in blocks) {
                 block.recourceType = GenerateNewRecource();
+                block.setSprite(RecourceSettings.GetSprite(block.recourceType));
             }
         }
 
         public Recource GenerateNewRecource() {
-            var rnd = new System.Random();
             return (Recource)rnd.Next(Recource.GetNames(typeof(Recource)).Length);
         }
     }

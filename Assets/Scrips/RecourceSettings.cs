@@ -24,7 +24,7 @@ namespace DrillTap {
             instance = this;
         }
 
-        public static Sprite GetMaterial(Recource recourceType) {
+        public static Sprite GetSprite(Recource recourceType) {
             return instance.types.SingleOrDefault(x => x.recource == recourceType).recourceImage;
         }
 
