@@ -4,8 +4,12 @@ using UnityEngine;
 
 namespace DrillTap {
     public class Manager : MonoBehaviour {
-        private static Manager instance;
         public RecourceSettings settings;
+        public int currentLayer;
+
+        private static Manager instance;
+        private int score;
+        
 
         public static Manager Instance
         { // static instance of the gameManager
@@ -13,8 +17,14 @@ namespace DrillTap {
         }
 
         void Awake() {
+            Layer.onBlockDestroy += Score;
             instance = this;
             settings.Init();
+        }
+
+        // Update is called once per frame
+        void Score(int addScore) {
+            score += addScore;
         }
     }
 }
