@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DrillTap {
-    public enum Recource {
+    public enum Resource {
         A, B, C
     }
 }

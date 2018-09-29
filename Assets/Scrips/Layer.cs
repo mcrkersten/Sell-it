@@ -8,7 +8,7 @@ namespace DrillTap {
 
         public delegate void OnBlockDestroy(int score);
         public static event OnBlockDestroy onBlockDestroy;
-        public RecourceBlock[] blocks;
+        public ResourceBlock[] blocks;
 
         private int value;
         private float layerStrength;
@@ -20,27 +20,28 @@ namespace DrillTap {
         public void GetDestroyed() {
             value = 0;
             if (onBlockDestroy != null) {
-                foreach (RecourceBlock block in blocks) {
-                    value += RecourceSettings.GetWaarden(block.recourceType);
+                foreach (ResourceBlock block in blocks) {
+                    value += ResourceSettings.GetValue(block.resourceType);
                 }
                 onBlockDestroy(value);
             }
             this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 4.5f, this.gameObject.transform.position.z);
+            Manager.Instance.currentLayer += 1;
             GenerateBlock();
         }
 
         public void GenerateBlock() {
-            foreach(RecourceBlock block in blocks) {
-                block.recourceType = (Recource)(UnityEngine.Random.Range(0, System.Enum.GetNames(typeof(Recource)).Length));
-                block.SetSprite(RecourceSettings.GetSprite(block.recourceType));
-                layerStrength += RecourceSettings.GetStrength(block.recourceType);
+            int layer = Manager.Instance.currentLayer;
+            foreach(ResourceBlock block in blocks) {
+                block.GenerateBlock(layer);
+                layerStrength += block.strength;
             }
         }
 
         public void OnTriggerStay2D(Collider2D collision) {
             if(collision.gameObject.tag == "Player") {
-                print("YES");
-                layerStrength -= collision.gameObject.GetComponent<Drill>().damageCalculation();
+                layerStrength -= collision.gameObject.GetComponent<Drill>().damageCalculation() * Time.deltaTime;
+                //print("Layer strength left: " + layerStrength.ToString());
             }
             if(layerStrength <= 0) {
                 GetDestroyed();

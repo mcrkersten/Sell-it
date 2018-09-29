@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 namespace DrillTap {
     public class Manager : MonoBehaviour {
-        public RecourceSettings settings;
+        public ResourceSettings settings;
         public int currentLayer;
+        public int resourceLayerSize;
         public Text scoreText;
 
         private static Manager instance;
