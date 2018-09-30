@@ -11,7 +11,7 @@ namespace DrillTap {
         public ResourceBlock[] blocks;
 
         private int value;
-        private float layerStrength;
+        private int blocksBroken;
 
         public void Start() {
             GenerateBlock();
@@ -31,20 +31,24 @@ namespace DrillTap {
         }
 
         public void GenerateBlock() {
+            blocksBroken = 0;
             int layer = Manager.Instance.currentLayer;
-            foreach(ResourceBlock block in blocks) {
+            foreach (ResourceBlock block in blocks) {
                 block.GenerateBlock(layer);
-                layerStrength += block.strength;
             }
         }
 
         public void OnTriggerStay2D(Collider2D collision) {
-            if(collision.gameObject.tag == "Player") {
-                layerStrength -= collision.gameObject.GetComponent<Drill>().damageCalculation() * Time.deltaTime;
-                //print("Layer strength left: " + layerStrength.ToString());
-            }
-            if(layerStrength <= 0) {
-                GetDestroyed();
+            if (collision.gameObject.tag == "Player") {
+                float damageLeft = blocks[blocksBroken].Break(collision.gameObject.GetComponent<Drill>().damageCalculation() * Time.deltaTime);
+                if (damageLeft > 0f) {
+                    blocksBroken++;
+                    if (blocksBroken >= blocks.Length) {
+                        GetDestroyed();
+                    } else {
+                        blocks[blocksBroken].Break(damageLeft);
+                    }
+                }
             }
         }
     }
